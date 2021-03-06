@@ -14,7 +14,6 @@ public class main {
     public static void main(String[] args) {
         kich_ban_1();
         kich_ban_2();
-        kich_ban_3();
     }
 
     public static void kich_ban_1() {
@@ -25,13 +24,11 @@ public class main {
 
     public static void kich_ban_2() {
         StudentController sv = new StudentController(new StudentView());
+        sv.lua_chon_menu();
         sv.nhap_danh_sach_sinh_vien();
         sv.hien_thi_danh_sach_sinh_vien();
+        sv.tim_kiem_sv_theo_sdt();
+        sv.tim_sv_theo_ten();
     }
 
-    public static void kich_ban_3() {
-        StudentController sv = new StudentController(new StudentView());
-        sv.timkiemsdt();
-
-    }
 }

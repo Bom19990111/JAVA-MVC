@@ -45,12 +45,62 @@ public class StudentController {
         this.students = this.view.nhap_du_lieu_nhieu_sinh_vien();
     }
 
-//    
     public void hien_thi_danh_sach_sinh_vien() {
         this.view.hien_thi_danh_sach_sinh_vien(this.students);
     }
 
-    public void timkiemsdt() {
-        this.view.tim_sv_theo_sdt(this.students);
+     private ArrayList<Student> tim_sv_theo_sdt(ArrayList<Student> students, String sdt){
+        ArrayList<Student> result = new ArrayList<>(); //empty =khong tim thay
+     
+        for(Student sv: students){
+            if (sv.getPhone().contains(sdt)){
+                result.add(sv);
+            }
+             
+        }
+        return result;
     }
+    public void tim_kiem_sv_theo_sdt(){
+        String sdt = this.view.nhap_sdt_can_tim();
+        ArrayList<Student> kq = tim_sv_theo_sdt(students, sdt);
+        this.view.ket_qua_tim_kiem_sdt(kq);
+    }
+
+    public void lua_chon_menu() {
+        int kq = view.hien_thi_menu();
+        switch (kq) {
+            case 1:
+                this.nhap_danh_sach_sinh_vien();
+                break;
+            case 2:
+                this.tim_kiem_sv_theo_sdt();
+                break;
+            case 3:
+                this.tim_sv_theo_ten();
+                break;
+            default:
+                System.out.println("Thoát");
+                break;
+        }
+    }
+
+    private ArrayList<Student> tim_sv_theo_ten(ArrayList<Student> students, String delete) {
+        ArrayList<Student> result = new ArrayList<>();
+
+        for (Student sv : students) {
+            if (sv.getFullname().contains(delete)) {
+                result.add(sv);
+            }
+
+        }
+        return result;
+    }
+
+    public void tim_sv_theo_ten() {
+        String delete = this.view.nhap_sv_can_tim();
+        ArrayList<Student> kq = tim_sv_theo_ten(students, delete);
+        this.view.ket_qua_tim_sv(kq);
+    }
+    
+    
 }

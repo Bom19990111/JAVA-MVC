@@ -62,19 +62,60 @@ public class StudentView {
         System.out.println("++++++++++++++++++++++++++++++++++");
     }
 
-    //Tra ve so thu tu dau tien cua sv trong mang tim kiem dc
-    public ArrayList<Student> tim_sv_theo_sdt(ArrayList<Student> students) {
-        ArrayList<Student> result = new ArrayList<>();
+    public String nhap_sdt_can_tim() {
+        System.out.println("+++++++++++++++++++++++");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập sdt sinh viên cần tìm: ");
-        String search = sc.nextLine();
-        for (Student sv : students) {
-            if (sv.getPhone().equalsIgnoreCase(search)) {
-                sv.toString();
-            } else {
-                System.out.println("Khong tim thay!");
+        System.out.println("Nhap so dien thoai can tim kiem: ");
+        String sdt = sc.nextLine();
+        System.out.println("+++++++++++++++++++++++");
+        return sdt;
+    }
+
+    //view in ket qua tim kiem
+    public void ket_qua_tim_kiem_sdt(ArrayList<Student> students) {
+        System.out.println("+++++++++++++++++++++++");
+        if (students.isEmpty()) {
+            System.out.println("Khong tim thay");
+        } else {
+            for (Student sv : students) {
+                System.out.println(sv.toString());
             }
         }
-        return null;
+        System.out.println("+++++++++++++++++++++++");
     }
+
+    public int hien_thi_menu() {
+        System.out.println("+++++++++++++++++++++++");
+        System.out.println("1. Nhap du lieu");
+        System.out.println("2. Tim kiem theo sdt ");
+        System.out.println("3. Tim kiem theo ten ");
+        System.out.println("4. Thoat chuong trinh");
+        System.out.println("+++++++++++++++++++++++");
+        System.out.println("Ban chon chuc nang nao?");
+        Scanner sc = new Scanner(System.in);
+        int kq = Integer.parseInt(sc.nextLine());
+        return kq;
+    }
+
+    public String nhap_sv_can_tim() {
+        System.out.println("+++++++++++++++++++++++");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhap ten sinh vien can tim: ");
+        String delete = sc.nextLine();
+        System.out.println("+++++++++++++++++++++++");
+        return delete;
+    }
+
+    public void ket_qua_tim_sv(ArrayList<Student> students) {
+        System.out.println("+++++++++++++++++++++++");
+        if (students.isEmpty()) {
+            System.out.println("Hay nhap ten sinh vien can tim kiem");
+        } else {
+            for (Student sv : students) {
+                System.out.println(sv.toString());
+            }
+        }
+        System.out.println("+++++++++++++++++++++++");
+    }
+
 }
